@@ -20,4 +20,23 @@ export const setNotification = (notificationObject, timeSeconds) => {
   };
 };
 
+export const setConfirmation = (message, timeSeconds = 5) => {
+  return (dispatch) => {
+    dispatch(
+      setNotification({ type: "confirmation", message: message }, timeSeconds),
+    );
+  };
+};
+
+export const setError = (error, timeSeconds = 5) => {
+  return (dispatch) => {
+    const errorString = Object.values(error.response.data.error)
+      .map((err) => err.message)
+      .join(" ");
+    dispatch(
+      setNotification({ type: "error", message: errorString }, timeSeconds),
+    );
+  };
+};
+
 export default notificationSlice.reducer;
