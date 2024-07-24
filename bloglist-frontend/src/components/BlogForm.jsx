@@ -1,27 +1,27 @@
-import { useState } from 'react'
-import PropTypes from 'prop-types'
+import { useState } from "react";
+import PropTypes from "prop-types";
 
-const BlogForm = ({ createBlog  }) => {
-  const [author, setAuthor] = useState('')
-  const [title, setTitle] = useState('')
-  const [url, setUrl] = useState('')
+const BlogForm = ({ createBlog }) => {
+  const [author, setAuthor] = useState("");
+  const [title, setTitle] = useState("");
+  const [url, setUrl] = useState("");
 
   const resetBlogInputs = () => {
-    setAuthor('')
-    setTitle('')
-    setUrl('')
-  }
+    setAuthor("");
+    setTitle("");
+    setUrl("");
+  };
 
   const addBlog = (event) => {
-    event.preventDefault()
+    event.preventDefault();
     const newBlogObject = {
       author: author,
       title: title,
-      url: url
-    }
-    createBlog(newBlogObject)
-    resetBlogInputs()
-  }
+      url: url,
+    };
+    createBlog(newBlogObject);
+    resetBlogInputs();
+  };
 
   return (
     <>
@@ -30,29 +30,29 @@ const BlogForm = ({ createBlog  }) => {
         <div>
           title
           <input
-            data-testid='blogTitle'
+            data-testid="blogTitle"
             type="text"
             value={title}
             name="BlogTitle"
-            id='blogTitle'
+            id="blogTitle"
             onChange={({ target }) => setTitle(target.value)}
           />
         </div>
         <div>
           author
           <input
-            data-testid='blogAuthor'
+            data-testid="blogAuthor"
             type="text"
             value={author}
             name="BlogAuthor"
-            id='blogAuthor'
+            id="blogAuthor"
             onChange={({ target }) => setAuthor(target.value)}
           />
         </div>
         <div>
           url
           <input
-            data-testid='blogUrl'
+            data-testid="blogUrl"
             type="text"
             value={url}
             name="BlogUrl"
@@ -63,10 +63,10 @@ const BlogForm = ({ createBlog  }) => {
         <button type="submit">Create</button>
       </form>
     </>
-  )
-}
+  );
+};
 BlogForm.propTypes = {
-  createBlog: PropTypes.func.isRequired
-}
+  createBlog: PropTypes.func.isRequired,
+};
 
-export default BlogForm
+export default BlogForm;

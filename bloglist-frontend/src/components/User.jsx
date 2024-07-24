@@ -6,7 +6,7 @@ const User = ({ user, handleLogout }) => {
         <button onClick={handleLogout}>Logout</button>
       </p>
     </div>
-  )
-}
+  );
+};
 
-export default User
+export default User;
