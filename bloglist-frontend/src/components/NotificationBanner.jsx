@@ -1,14 +1,14 @@
 import { useState, useImperativeHandle, forwardRef } from "react";
+import { setNotification } from "../reducers/notificationReducer";
+import { useSelector, useDispatch } from 'react-redux'
 
 const Notification = forwardRef((_, ref) => {
-  const [notification, setNotification] = useState(null);
+  const dispatch = useDispatch()
+  const notification = useSelector(state => state.notification)
 
-  const notificationMessages = (messagesList, msgType) => {
-    const messagesString = messagesList.map((er) => er.message).join(" ");
-    setNotification({ type: msgType, message: messagesString });
-    setTimeout(() => {
-      setNotification(null);
-    }, 5000);
+  const notificationMessages = (messagesList, notificationType) => {
+    const notificationMessage = messagesList.map((er) => er.message).join(" ");
+    dispatch(setNotification({ type: notificationType, message: notificationMessage }, 5))
   };
   useImperativeHandle(ref, () => {
     return {

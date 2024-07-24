@@ -72,7 +72,6 @@ const App = () => {
   };
 
   const updateLikes = async (objectId, updatedBlogObject) => {
-    console.log("TÄÄLLÄ", objectId);
     try {
       const returnedBlog = await blogService.update(
         objectId,
