@@ -30,9 +30,12 @@ export const setConfirmation = (message, timeSeconds = 5) => {
 
 export const setError = (error, timeSeconds = 5) => {
   return (dispatch) => {
-    const errorString = Object.values(error.response.data.error)
-      .map((err) => err.message)
-      .join(" ");
+    let errorString = error.response.data.error.message;
+    if (error.response.status === 400) {
+      errorString = Object.values(error.response.data.error)
+        .map((err) => err.message)
+        .join(" ");
+    }
     dispatch(
       setNotification({ type: "error", message: errorString }, timeSeconds),
     );

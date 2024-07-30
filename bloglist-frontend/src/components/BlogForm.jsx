@@ -4,7 +4,7 @@ import { createBlog } from "../reducers/blogsReducer";
 
 
 const BlogForm = ({ blogRef }) => {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   const [author, setAuthor] = useState("");
   const [title, setTitle] = useState("");
